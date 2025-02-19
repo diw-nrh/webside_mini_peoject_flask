@@ -1,0 +1,126 @@
+/* ตั้งค่าพื้นหลังและฟอนต์ */
+body {
+    background-color: #f4f7f8;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    /* จัดเรียงแนวตั้ง */
+    justify-content: flex-start;
+    /* เริ่มต้นจากด้านบน */
+    align-items: center;
+    /* จัดให้ตรงกลางแนวนอน */
+    height: 100vh;
+    margin: 0;
+    padding-top: 50px;
+    /* ระยะห่างด้านบน */
+}
+
+/* หัวข้อ */
+h2 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* ฟอร์ม */
+form {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* ป้ายกำกับ */
+label {
+    font-weight: bold;
+    color: #34495e;
+    display: block;
+    margin-bottom: 6px;
+}
+
+/* ช่องกรอกข้อมูล */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* ปุ่ม Submit */
+input[type="submit"] {
+    width: 100%;
+    background-color: #3498db;
+    color: white;
+    padding: 12px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #e0b300;
+    transform: translateY(-2px);
+}
+
+/* ตอบสนองหน้าจอเล็ก */
+@media (max-width: 400px) {
+    form {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+/* จัดตำแหน่งลิงก์ให้ตรงกลางใต้ฟอร์ม */
+.register-link {
+    margin-top: 15px;
+    /* ระยะห่างจากปุ่ม Login */
+    text-align: center;
+    /* จัดข้อความตรงกลาง */
+}
+
+/* สไตล์ลิงก์ */
+.register-link a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* เอฟเฟกต์เมื่อ hover */
+.register-link a:hover {
+    color: #2980b9;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
