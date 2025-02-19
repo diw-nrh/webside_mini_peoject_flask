@@ -1,11 +1,25 @@
-{% extends "base.html" %}
-{% block content %}
-<h2>Register</h2>
-<form method="POST">
-  {{ form.hidden_tag() }}
-  {{ form.username.label }} {{ form.username() }}<br>
-  {{ form.password.label }} {{ form.password() }}<br>
-  {{ form.confirm_password.label }} {{ form.confirm_password() }}<br>
-  {{ form.submit() }}
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flask Login System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login_rigister.css') }}">
+</head>
+
+<body>
+  <h2>Register</h2>
+  <form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.username.label }} {{ form.username() }}<br>
+    {{ form.password.label }} {{ form.password() }}<br>
+    {{ form.confirm_password.label }} {{ form.confirm_password() }}<br>
+    {{ form.submit() }}
+    <div class="register-link">
+      <a href="{{ url_for('login') }}">login</a>
+    </div>
+  </form>
+</body>
+
+</html>
