@@ -16,6 +16,12 @@ class Note(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # สร้างความสัมพันธ์กับ User
     user = db.relationship('User', backref=db.backref('notes', lazy=True))  # ความสัมพันธ์กับ User
 
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    note_id = db.Column(db.Integer, db.ForeignKey('note.id'), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    created_at = db.Column(db.DateTime, default=db.func.now())
+
 # models.py
 def init_db(app):
     db.init_app(app)
