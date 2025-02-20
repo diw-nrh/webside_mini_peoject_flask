@@ -40,3 +40,9 @@ def add_note():
         return redirect(url_for('note.view_notes'))
 
     return render_template('add_note.html', form=form)
+
+@note_bp.route('/notes')
+@login_required
+def view_notes():
+    notes = Note.query.filter_by(user_id=current_user.id).all()
+    return render_template('home.html', notes=notes, user=current_user.username)
