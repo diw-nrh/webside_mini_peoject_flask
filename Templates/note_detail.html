@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ note.title }}</title>
+</head>
+
+<body>
+    <h1>{{ note.title }}</h1>
+    <p>{{ note.content }}</p>
+    {% if note.image_filename %}
+    <img src="{{ url_for('static', filename='uploads/' + note.image_filename) }}" alt="รูปภาพ" width="200">
+    {% endif %}
+
+    <h2>ความคิดเห็น</h2>
+    <ul>
+        {% for comment in note.comments %}
+        <li>{{ comment.content }} - {{ comment.created_at }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>เพิ่มความคิดเห็น</h3>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <p>{{ form.content.label }}<br> {{ form.content(rows=4, cols=40) }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+    <a href="{{ url_for('note.view_notes') }}">กลับไปยังโน้ตทั้งหมด</a>
+</body>
+
+</html>
