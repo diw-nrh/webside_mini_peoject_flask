@@ -1,8 +1,6 @@
-from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 
-# กำหนดฐานข้อมูล SQLite3
 db = SQLAlchemy()
 
 class User(UserMixin, db.Model):
@@ -10,8 +8,18 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
 
+class Note(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    image_filename = db.Column(db.String(200))  # เก็บชื่อไฟล์รูปภาพ
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # สร้างความสัมพันธ์กับ User
+    user = db.relationship('User', backref=db.backref('notes', lazy=True))  # ความสัมพันธ์กับ User
+
+# models.py
 def init_db(app):
     db.init_app(app)
     with app.app_context():
-        db.create_all()
+        db.create_all()  # สร้างฐานข้อมูลใหม่
         db.session.commit()
+
