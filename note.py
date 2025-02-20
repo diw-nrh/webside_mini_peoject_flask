@@ -46,3 +46,22 @@ def add_note():
 def view_notes():
     notes = Note.query.filter_by(user_id=current_user.id).all()
     return render_template('home.html', notes=notes, user=current_user.username)
+
+@note_bp.route('/note/<int:note_id>', methods=['GET', 'POST'])
+@login_required
+def view_note(note_id):
+    note = Note.query.get_or_404(note_id)
+    if note.user_id != current_user.id:
+        flash('คุณไม่มีสิทธิ์เข้าถึงโน้ตนี้!', 'danger')
+        return redirect(url_for('note.view_notes'))
+
+    form = CommentForm()
+
+    if form.validate_on_submit():
+        new_comment = Comment(note_id=note.id, content=form.content.data)
+        db.session.add(new_comment)
+        db.session.commit()
+        flash('ความคิดเห็นถูกเพิ่มแล้ว!', 'success')
+        return redirect(url_for('note.view_note', note_id=note.id))
+
+    return render_template('note_detail.html', note=note, form=form)
