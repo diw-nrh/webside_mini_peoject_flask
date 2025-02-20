@@ -1,0 +1,80 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #007bff;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background-color: #0056b3;
+}
+
+/* Flash Messages */
+.success {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 5px;
+}
+
+.error {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 5px;
+}
+
+/* Main Content */
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    width: 50%;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* ลิงก์ Register */
+.register-link {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.register-link a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.register-link a:hover {
+    color: #2980b9;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
