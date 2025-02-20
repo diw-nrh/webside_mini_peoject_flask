@@ -4,8 +4,9 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from werkzeug.security import generate_password_hash, check_password_hash
 import models
 import forms
+from note import note_bp
 
-app = Flask(__name__)  # กำหนด Flask app (ไม่มีซ้ำ)
+app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
@@ -17,13 +18,22 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"
 
+# ฟังก์ชัน load_user
 @login_manager.user_loader
 def load_user(user_id):
-    return models.User.query.get(int(user_id))
+    return models.db.session.get(models.User, user_id)  # ใช้ session.get() จาก db ที่นำเข้าจาก models.py
+
+# ลงทะเบียน Blueprint ของโน้ต
+app.register_blueprint(note_bp)
 
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/home')
+@login_required
+def home():
+    return render_template("home.html", user=current_user.username)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -33,7 +43,7 @@ def login():
         if user and check_password_hash(user.password, form.password.data):
             login_user(user)
             flash('Logged in successfully!', 'success')
-            return redirect(url_for('home'))  # แก้ให้ไป home แทน
+            return redirect(url_for('note.view_notes'))  # แก้ให้ไปที่โน้ตโดยตรง
         else:
             flash('Invalid username or password!', 'danger')
 
@@ -57,11 +67,6 @@ def register():
         return redirect(url_for('login'))
     
     return render_template('register.html', form=form)
-
-@app.route('/home')
-@login_required
-def home():
-    return render_template("home.html", user=current_user.username)
 
 @app.route('/logout')
 @login_required
