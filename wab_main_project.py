@@ -58,18 +58,17 @@ def register():
     
     return render_template('register.html', form=form)
 
+@app.route('/home')
+@login_required
+def home():
+    return render_template("home.html", user=current_user.username)
+
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
     flash('You have been logged out.', 'info')
     return redirect(url_for('login'))
-
-@app.route('/home')
-@login_required
-def home():
-    return render_template("home.html", user=current_user.username)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
