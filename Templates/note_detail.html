@@ -18,9 +18,7 @@
     {% if note.image_filename %}
     <img src="{{ url_for('static', filename='uploads/' + note.image_filename) }}" alt="รูปภาพ" width="200">
     {% endif %}
-    <form>
-        <p>{{ note.content }}</p>
-    </form>
+    <p>{{ note.content }}</p>
     <h3>เพิ่มความคิดเห็น</h3>
     <form method="POST">
         {{ form.hidden_tag() }}

@@ -1,6 +1,8 @@
 {% extends "base.html" %}
+
 {% block content %}
-<h2>Welcome to the camping community, {{ user }}</h2>
+<h2>Welcome to the camping and travel community, {{ user }}</h2>
+
 <!-- Separate form for adding a note -->
 <div class="add-note-form">
     <form action="{{ url_for('note.add_note') }}" method="GET">
@@ -17,8 +19,8 @@
         <img src="{{ url_for('static', filename='uploads/' + note.image_filename) }}" alt="picture" width="200">
         {% endif %}
         <p>{{ note.content }}</p>
+        <small>Posted by: {{ note.user.username }}</small> <!-- แสดงชื่อผู้โพสต์ -->
     </li>
     {% endfor %}
 </ul>
-
 {% endblock %}
