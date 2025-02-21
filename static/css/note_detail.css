@@ -62,3 +62,27 @@ img {
     max-width: 1000px;
     height: auto;
 }
+
+/* Comment section styling */
+h2 {
+    margin-top: 40px;
+    font-size: 24px;
+    color: #4CAF50;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    max-width: 800px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+li {
+    font-size: 16px;
+    background-color: #fff;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
