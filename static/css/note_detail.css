@@ -147,3 +147,19 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+/* Responsive design */
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+    }
+
+    ul {
+        width: 90%;
+    }
+
+    img {
+        width: 100%;
+        max-width: 300px;
+    }
+}
