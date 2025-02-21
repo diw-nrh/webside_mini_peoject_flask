@@ -1,15 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome to the camping community, {{ user }}</h2>
+<!-- Separate form for adding a note -->
+<div class="add-note-form">
+    <form action="{{ url_for('note.add_note') }}" method="GET">
+        <button type="submit" class="submit-btn">Create post</button>
+    </form>
+</div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
+<!-- List of notes -->
+<ul class="notes-list">
+    {% for note in notes %}
+    <li class="note-item">
+        <h2><a href="{{ url_for('note.view_note', note_id=note.id) }}">{{ note.title }}</a></h2>
+        {% if note.image_filename %}
+        <img src="{{ url_for('static', filename='uploads/' + note.image_filename) }}" alt="picture" width="200">
+        {% endif %}
+        <p>{{ note.content }}</p>
+    </li>
+    {% endfor %}
+</ul>
 
-<body>
-    <h1>hello</h1>
-</body>
-
-</html>
+{% endblock %}

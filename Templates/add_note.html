@@ -4,11 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เพิ่มโน้ต</title>
+    <title>Add a note</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_note.css') }}">
 </head>
 
 <body>
-    <h1>เพิ่มโน้ต</h1>
+    <nav>
+        <a href="{{ url_for('note.view_notes') }}">Home</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+    <h1>Add a note</h1>
     <form method="POST" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <p>
@@ -21,7 +26,10 @@
         </p>
         <p>
             {{ form.image.label }}<br>
-            {{ form.image() }}
+            <label for="image" class="custom-file-upload">
+                Upload photo
+            </label>
+            {{ form.image(id="image") }}
         </p>
         <p>{{ form.submit() }}</p>
     </form>
