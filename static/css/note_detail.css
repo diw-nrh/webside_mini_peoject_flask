@@ -134,3 +134,16 @@ form button[type="submit"] {
 form button[type="submit"]:hover {
     background-color: #45a049;
 }
+
+/* Link back to the list of notes */
+a {
+    color: #4CAF50;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
