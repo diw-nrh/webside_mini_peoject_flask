@@ -42,3 +42,39 @@ h1 {
     font-size: 28px;
     margin-bottom: 20px;
 }
+
+/* Form container styling */
+form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+form p {
+    margin-bottom: 15px;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form textarea,
+form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+form textarea {
+    resize: vertical;
+}
