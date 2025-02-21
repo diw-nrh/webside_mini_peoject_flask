@@ -3,11 +3,10 @@ nav {
     background-color: #333;
     padding: 15px;
     text-align: left;
-    /* Align the links to the left */
     width: 100%;
-    /* Ensure the navigation bar spans across the full width */
     box-sizing: border-box;
-    /* Ensure padding is included in width calculation */
+    position: relative;
+    z-index: 2;
 }
 
 nav a {
@@ -24,16 +23,30 @@ nav a:hover {
     background-color: #575757;
 }
 
-/* General body styles */
+/* General body styles with background image */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
     color: #333;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Add background image with overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') center/cover no-repeat;
+    opacity: 0.8;
+    z-index: -1;
 }
 
 /* Content block style */
@@ -41,21 +54,60 @@ body {
     max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    position: relative;
+    z-index: 1;
 }
 
-/* Header styles */
-h1,
-h2 {
-    color: #333;
+/* Note item styling with semi-transparent background */
+.note-item {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-/* Form styles for adding a note */
-.add-note-form {
-    margin: 20px 0;
+/* Rest of the existing styles remain the same */
+.notes-list {
+    list-style-type: none;
+    padding: 0;
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.note-item img {
+    width: 100%;
+    max-width: 200px;
+    margin: 10px auto;
+    display: block;
+}
+
+.note-item h2 {
+    color: #4CAF50;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.note-item a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.note-item a:hover {
+    text-decoration: underline;
+}
+
+.note-item p {
+    font-size: 14px;
+    color: #555;
 }
 
 .submit-btn {
@@ -73,65 +125,6 @@ h2 {
     background-color: #45a049;
 }
 
-/* List styles for notes */
-.notes-list {
-    list-style-type: none;
-    padding: 0;
-    max-width: 1200px;
-    width: 100%;
-    display: grid;
-    /* Use grid layout for note items */
-    grid-template-columns: repeat(3, 1fr);
-    /* Creates 3 equal columns */
-    gap: 20px;
-    /* Spacing between items */
-    margin-top: 20px;
-}
-
-/* Note item styling */
-.note-item {
-    background-color: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    /* Centers the content */
-}
-
-/* Image styles inside notes */
-.note-item img {
-    width: 100%;
-    max-width: 200px;
-    /* Max image size */
-    margin: 10px auto;
-    /* Centers the image */
-    display: block;
-}
-
-/* Title styling */
-.note-item h2 {
-    color: #4CAF50;
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.note-item a {
-    text-decoration: none;
-    color: #4CAF50;
-    font-weight: bold;
-}
-
-.note-item a:hover {
-    text-decoration: underline;
-}
-
-/* Content styling */
-.note-item p {
-    font-size: 14px;
-    color: #555;
-}
-
-/* Footer (if you add one later) */
 footer {
     background-color: #333;
     color: white;
@@ -140,19 +133,18 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
+    z-index: 2;
 }
 
-/* Responsive design for smaller screens */
+/* Responsive design */
 @media (max-width: 768px) {
     .notes-list {
         grid-template-columns: repeat(2, 1fr);
-        /* 2 columns for smaller screens */
     }
 }
 
 @media (max-width: 480px) {
     .notes-list {
         grid-template-columns: 1fr;
-        /* 1 column for very small screens */
     }
 }

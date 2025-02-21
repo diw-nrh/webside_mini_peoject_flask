@@ -1,24 +1,11 @@
-/* รีเซ็ตค่าเริ่มต้นของ CSS */
+/* Reset default CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ตั้งค่าพื้นหลังและฟอนต์ */
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #007bff, #00c6ff);
-    color: white;
-    text-align: center;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* หัวข้อหลัก */
+/* Main heading */
 h1 {
     font-size: 3rem;
     font-weight: bold;
@@ -27,7 +14,7 @@ h1 {
     animation: fadeIn 1.5s ease-in-out;
 }
 
-/* ตั้งค่าพื้นฐาน */
+/* Basic settings */
 * {
     margin: 0;
     padding: 0;
@@ -39,49 +26,55 @@ html {
     height: 100%;
 }
 
-/* พื้นหลังพร้อมรูป */
+/* Default background settings */
 body {
-    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100vh;
-    margin: 0;
     font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #000000, #242626);
+    /* Default background */
     color: white;
     text-align: center;
+    height: 100vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    /* Prevent scrolling */
 }
 
-/* กล่องตรงกลางโปร่งใส */
-.container {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 40px 50px;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 400px;
+/* Use ::before to create a background image layer */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') center/cover no-repeat;
+    filter: brightness(0.3);
+    /* Initial dark brightness */
+    z-index: -1;
+    /* Make sure the image is under the content */
+    animation: lightenBackground 5s ease-in-out forwards;
+    /* Gradually brighten the image */
 }
 
-/* หัวข้อ */
+/* Header */
 .container h2 {
     font-size: 1.8rem;
     margin-bottom: 15px;
     font-weight: bold;
 }
 
-/* คำอธิบาย */
+/* Description */
 .container p {
     font-size: 1rem;
     color: #555;
     margin-bottom: 25px;
 }
 
-/* ปุ่ม */
+/* Button */
 .submit-btn {
     background-color: #51a0dc;
     color: white;
@@ -91,16 +84,20 @@ body {
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
+    opacity: 0;
+    /* Initially hide the button */
+    animation: fadeIn 3s ease 2s forwards;
+    /* Slowly reveal the button after 2 seconds */
 }
 
+/* Button hover effect */
 .submit-btn:hover {
     background-color: #e0b300;
     transform: scale(1.05);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-
-/* แอนิเมชัน */
+/* Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -110,5 +107,36 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Keyframes for background brightening animation */
+@keyframes lightenBackground {
+    0% {
+        filter: brightness(0.3);
+        /* Start dark */
+    }
+
+    50% {
+        filter: brightness(0.6);
+        /* Slightly brighter */
+    }
+
+    100% {
+        filter: brightness(1);
+        /* Fully bright */
+    }
+}
+
+/* Keyframes for the button gradually appearing */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        /* Hide the button */
+    }
+
+    100% {
+        opacity: 1;
+        /* Make the button visible */
     }
 }

@@ -1,21 +1,17 @@
-/* ตั้งค่าพื้นหลังและฟอนต์ */
+/* Set background and font */
 body {
     background-color: #f4f7f8;
     font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
-    /* จัดเรียงแนวตั้ง */
     justify-content: flex-start;
-    /* เริ่มต้นจากด้านบน */
     align-items: center;
-    /* จัดให้ตรงกลางแนวนอน */
     height: 100vh;
     margin: 0;
     padding-top: 50px;
-    /* ระยะห่างด้านบน */
 }
 
-/* หัวข้อ */
+/* Header */
 h2 {
     text-align: center;
     color: #2c3e50;
@@ -23,7 +19,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* ฟอร์ม */
+/* Form */
 form {
     background: rgba(255, 255, 255, 0.8);
     padding: 40px 50px;
@@ -34,7 +30,7 @@ form {
     width: 100%;
 }
 
-/* ป้ายกำกับ */
+/* Label */
 label {
     font-weight: bold;
     color: #34495e;
@@ -42,7 +38,7 @@ label {
     margin-bottom: 6px;
 }
 
-/* ช่องกรอกข้อมูล */
+/* Input fields */
 input[type="text"],
 input[type="password"] {
     width: 100%;
@@ -60,7 +56,7 @@ input[type="password"]:focus {
     outline: none;
 }
 
-/* ปุ่ม Submit */
+/* Submit button */
 input[type="submit"] {
     width: 100%;
     background-color: #3498db;
@@ -78,7 +74,7 @@ input[type="submit"]:hover {
     transform: translateY(-2px);
 }
 
-/* ตอบสนองหน้าจอเล็ก */
+/* Small screen responsiveness */
 @media (max-width: 400px) {
     form {
         width: 90%;
@@ -86,15 +82,15 @@ input[type="submit"]:hover {
     }
 }
 
-/* จัดตำแหน่งลิงก์ให้ตรงกลางใต้ฟอร์ม */
+/* Position link in the center below the form */
 .register-link {
     margin-top: 15px;
-    /* ระยะห่างจากปุ่ม Login */
+    /* Space from the Login button */
     text-align: center;
-    /* จัดข้อความตรงกลาง */
+    /* Center align the text */
 }
 
-/* สไตล์ลิงก์ */
+/* Link styles */
 .register-link a {
     text-decoration: none;
     color: #3498db;
@@ -103,7 +99,7 @@ input[type="submit"]:hover {
     transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-/* เอฟเฟกต์เมื่อ hover */
+/* Effect on hover */
 .register-link a:hover {
     color: #2980b9;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);

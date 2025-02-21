@@ -1,11 +1,11 @@
-/* รีเซ็ตค่าเริ่มต้นของ CSS */
+/* Reset CSS defaults */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ตั้งค่าพื้นหลังและฟอนต์ */
+/* Set background and font */
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to right, #007bff, #00c6ff);
@@ -18,7 +18,7 @@ body {
     justify-content: center;
 }
 
-/* หัวข้อหลัก */
+/* Main heading */
 h1 {
     font-size: 3rem;
     font-weight: bold;
@@ -27,9 +27,9 @@ h1 {
     animation: fadeIn 1.5s ease-in-out;
 }
 
-/* ปุ่มสไตล์ */
+/* Button styles */
 
-/* แอนิเมชัน */
+/* Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
