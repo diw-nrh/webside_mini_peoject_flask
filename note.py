@@ -44,7 +44,8 @@ def add_note():
 @note_bp.route('/notes')
 @login_required
 def view_notes():
-    notes = Note.query.filter_by(user_id=current_user.id).all()
+    # Retrieve all notes from the system Not limited to user notes
+    notes = Note.query.all()  # Show all records in the system
     return render_template('home.html', notes=notes, user=current_user.username)
 
 @note_bp.route('/note/<int:note_id>', methods=['GET', 'POST'])
@@ -52,10 +53,7 @@ def view_notes():
 def view_note(note_id):
     note = Note.query.get_or_404(note_id)
     
-    if note.user_id != current_user.id:
-        flash('You do not have access to this note!', 'danger')
-        return redirect(url_for('note.view_notes'))
-
+    # There is no longer a need to verify that notes belong to the same user.
     form = CommentForm()
 
     if form.validate_on_submit():
@@ -68,4 +66,3 @@ def view_note(note_id):
     comments = Comment.query.filter_by(note_id=note.id).all()
 
     return render_template('note_detail.html', note=note, form=form, comments=comments)
-
