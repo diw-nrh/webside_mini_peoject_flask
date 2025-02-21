@@ -9,3 +9,29 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
+/* Style the navigation bar */
+nav {
+    background-color: #333;
+    padding: 15px;
+    text-align: left;
+    /* Align the links to the left */
+    width: 100%;
+    /* Ensure the navigation bar spans across the full width */
+    box-sizing: border-box;
+    /* Ensure padding is included in width calculation */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #575757;
+}
