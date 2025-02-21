@@ -52,3 +52,13 @@ p {
     max-width: 800px;
     text-align: justify;
 }
+
+/* Image styling */
+img {
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 1000px;
+    height: auto;
+}
