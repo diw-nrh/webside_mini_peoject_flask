@@ -23,6 +23,7 @@ class Comment(db.Model):
     content = db.Column(db.Text, nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.now())
 
+
 # models.py
 def init_db(app):
     db.init_app(app)
