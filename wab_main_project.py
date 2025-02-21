@@ -10,20 +10,20 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
-# เชื่อมต่อฐานข้อมูล
+# Connect to database
 models.init_db(app)
 
-# ตั้งค่า LoginManager
+# Set up LoginManager
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"
 
-# ฟังก์ชัน load_user
+# load_user function
 @login_manager.user_loader
 def load_user(user_id):
-    return models.db.session.get(models.User, user_id)  # ใช้ session.get() จาก db ที่นำเข้าจาก models.py
+    return models.db.session.get(models.User, user_id)  # Use session.get() from db imported from models.py
 
-# ลงทะเบียน Blueprint ของโน้ต
+# Register Note Blueprint
 app.register_blueprint(note_bp)
 
 @app.route('/')
@@ -43,7 +43,7 @@ def login():
         if user and check_password_hash(user.password, form.password.data):
             login_user(user)
             flash('Logged in successfully!', 'success')
-            return redirect(url_for('note.view_notes'))  # แก้ให้ไปที่โน้ตโดยตรง
+            return redirect(url_for('note.view_notes'))  # Edit to go directly to the note.
         else:
             flash('Invalid username or password!', 'danger')
 

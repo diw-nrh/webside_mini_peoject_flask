@@ -36,7 +36,7 @@ def add_note():
         db.session.add(new_note)
         db.session.commit()
 
-        flash('บันทึกโน้ตเรียบร้อยแล้ว!', 'success')
+        flash('Note completed!', 'success')
         return redirect(url_for('note.view_notes'))
 
     return render_template('add_note.html', form=form)
@@ -50,28 +50,22 @@ def view_notes():
 @note_bp.route('/note/<int:note_id>', methods=['GET', 'POST'])
 @login_required
 def view_note(note_id):
-    # ดึงข้อมูลโน้ตจากฐานข้อมูล
     note = Note.query.get_or_404(note_id)
     
-    # ตรวจสอบว่าโน้ตนั้นๆ เป็นของผู้ใช้ที่ล็อกอินอยู่หรือไม่
     if note.user_id != current_user.id:
-        flash('คุณไม่มีสิทธิ์เข้าถึงโน้ตนี้!', 'danger')
+        flash('You do not have access to this note!', 'danger')
         return redirect(url_for('note.view_notes'))
 
-    # สร้างฟอร์มสำหรับความคิดเห็น
     form = CommentForm()
 
-    # ตรวจสอบการส่งฟอร์มความคิดเห็น
     if form.validate_on_submit():
         new_comment = Comment(note_id=note.id, content=form.content.data)
         db.session.add(new_comment)
         db.session.commit()
-        flash('ความคิดเห็นถูกเพิ่มแล้ว!', 'success')
+        flash('Comment added!', 'success')
         return redirect(url_for('note.view_note', note_id=note.id))
 
-    # ดึงข้อมูลความคิดเห็นทั้งหมดที่เกี่ยวข้องกับโน้ต
     comments = Comment.query.filter_by(note_id=note.id).all()
 
-    # ส่งข้อมูลโน้ตและความคิดเห็นไปยังเทมเพลต
     return render_template('note_detail.html', note=note, form=form, comments=comments)
 

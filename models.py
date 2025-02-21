@@ -12,9 +12,10 @@ class Note(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     content = db.Column(db.Text, nullable=False)
-    image_filename = db.Column(db.String(200))  # เก็บชื่อไฟล์รูปภาพ
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # สร้างความสัมพันธ์กับ User
-    user = db.relationship('User', backref=db.backref('notes', lazy=True))  # ความสัมพันธ์กับ User
+    image_filename = db.Column(db.String(200))  # Store the image file name
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)  # Build relationships with users
+    user = db.relationship('User', backref=db.backref('notes', lazy=True))  # Relationship with User
+
 
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -26,6 +27,6 @@ class Comment(db.Model):
 def init_db(app):
     db.init_app(app)
     with app.app_context():
-        db.create_all()  # สร้างฐานข้อมูลใหม่
+        db.create_all()
         db.session.commit()
 
