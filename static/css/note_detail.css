@@ -43,3 +43,12 @@ h2 {
     color: #333;
     text-align: center;
 }
+
+/* Styling for the note content */
+p {
+    font-size: 18px;
+    margin: 20px;
+    line-height: 1.6;
+    max-width: 800px;
+    text-align: justify;
+}
